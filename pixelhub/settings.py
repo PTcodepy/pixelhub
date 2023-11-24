@@ -11,21 +11,30 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&w*-^&x6g!@)a$o+cm!-w$&o1so%rc%@e6y2ouonvxm($h=zy-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+DATABASES_URL = 'postgresql://postgres:a-F-13*DA5cCFFafa-bC1*AEGA-b4B1F@monorail.proxy.rlwy.net:47551/railway'
+DATABASES = {
+    'default': dj_database_url.config(default=DATABASES_URL, conn_max_age=1800),
+}
+
 
 
 # Application definition
@@ -70,20 +79,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pixelhub.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'fGCaC*agFAb*dCgA*Gb-e6*4DbG12bCG',
-        'HOST': 'monorail.proxy.rlwy.net',  # Se o banco de dados estiver na mesma máquina que o Django
-        'PORT': '42928',  # Porta padrão do PostgreSQL
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -121,6 +116,7 @@ USE_TZ = True
 
 # myproject/settings.py
 
+# Static files (CSS, JavaScript, Images)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
