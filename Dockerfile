@@ -13,6 +13,7 @@ COPY . /app/
 # Instalação das dependências do projeto
 RUN pip install -r requirements.txt
 
-# Comando para iniciar o aplicativo
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Comando para iniciar o aplicativo usando Gunicorn
+CMD ["gunicorn", "pixelhub_app.wsgi:application", "--bind", "0.0.0.0:8000"]
+
 

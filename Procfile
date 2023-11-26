@@ -1,1 +1,1 @@
-web: gunicorn pixelhub.wsgi
+web: gunicorn pixelhub.wsgi --log-file-
